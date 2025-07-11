@@ -14,7 +14,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, rgba(107, 142, 214, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
-            background-image: url('https://github.com/GreatCoderLucifer/NEET-UG-2026-Dashboard/blob/4c891286d8e110e8a49cbbe660c0cc163a56c06d/border-from-potted-plant-medical-supplies.jpg');
+            background-image: url('https://github.com/GreatCoderLucifer/NEET-UG-2026-Dashboard/blob/b512e6aab3b9fc55bc0d17d6d3d2193a14fd02e2/border-from-potted-plant-medical-supplies.jpg?raw=true');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -26,18 +26,21 @@
         }
 
         .dashboard {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            max-width: 800px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 
+                        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            padding: 30px;
+            max-width: 650px;
             width: 100%;
             text-align: center;
         }
 
         .title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
             margin-bottom: 10px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -46,6 +49,7 @@
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .subtitle {
@@ -58,18 +62,21 @@
         .countdown-container {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 15px;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .time-unit {
-            background: white;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 15px;
-            padding: 25px 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-            min-width: 120px;
+            padding: 20px 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1),
+                        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            min-width: 100px;
             position: relative;
             overflow: hidden;
         }
@@ -86,16 +93,17 @@
         }
 
         .time-value {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 8px;
             position: relative;
-            height: 60px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
             perspective: 1000px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .flip-card {
@@ -119,9 +127,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
             color: #2c3e50;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .flip-card-back {
@@ -137,14 +146,18 @@
         }
 
         .motivational-text {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #34495e;
             font-style: italic;
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(102, 126, 234, 0.05);
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-left: 4px solid #667eea;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .exam-date {
@@ -156,25 +169,29 @@
 
         @media (max-width: 768px) {
             .title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .countdown-container {
-                gap: 15px;
+                gap: 12px;
             }
             
             .time-unit {
-                min-width: 90px;
-                padding: 20px 15px;
+                min-width: 80px;
+                padding: 15px 12px;
             }
             
             .time-value {
-                font-size: 2rem;
-                height: 50px;
+                font-size: 1.8rem;
+                height: 45px;
             }
             
             .flip-card-front, .flip-card-back {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .dashboard {
+                padding: 25px;
             }
         }
 
