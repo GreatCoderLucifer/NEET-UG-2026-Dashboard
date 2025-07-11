@@ -30,41 +30,41 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 
                         0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-            padding: 30px;
-            max-width: 650px;
+            padding: 24px;
+            max-width: 520px;
             width: 100%;
             text-align: center;
         }
 
         .title {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #666;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 300;
         }
 
         .countdown-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .time-unit {
@@ -72,11 +72,11 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 20px 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1),
+            border-radius: 12px;
+            padding: 16px 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1),
                         0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-            min-width: 100px;
+            min-width: 80px;
             position: relative;
             overflow: hidden;
         }
@@ -93,12 +93,12 @@
         }
 
         .time-value {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             position: relative;
-            height: 55px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -111,109 +111,147 @@
             width: 100%;
             height: 100%;
             text-align: center;
-            transition: transform 0.6s;
             transform-style: preserve-3d;
         }
 
-        .flip-card.flipped {
-            transform: rotateY(180deg);
+        .flip-card.flipped .flip-top {
+            transform: rotateX(-90deg);
         }
 
-        .flip-card-front, .flip-card-back {
+        .flip-card.flipped .flip-bottom {
+            transform: rotateX(0deg);
+        }
+
+        .flip-top, .flip-bottom {
             position: absolute;
             width: 100%;
-            height: 100%;
+            height: 50%;
+            overflow: hidden;
             backface-visibility: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: #2c3e50;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.6s ease-in-out;
         }
 
-        .flip-card-back {
-            transform: rotateY(180deg);
+        .flip-top {
+            top: 0;
+            transform-origin: bottom;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .flip-bottom {
+            bottom: 0;
+            transform-origin: top;
+            transform: rotateX(90deg);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .flip-top-content, .flip-bottom-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 200%;
+        }
+
+        .flip-top-content {
+            align-items: flex-end;
+            padding-bottom: 2px;
+        }
+
+        .flip-bottom-content {
+            align-items: flex-start;
+            padding-top: 2px;
         }
 
         .time-label {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             color: #7f8c8d;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             font-weight: 500;
         }
 
         .motivational-text {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #34495e;
             font-style: italic;
-            margin-top: 15px;
-            padding: 15px;
+            margin-top: 12px;
+            padding: 12px;
             background: rgba(102, 126, 234, 0.1);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border-radius: 10px;
+            border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-left: 4px solid #667eea;
+            border-left: 3px solid #667eea;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .exam-date {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #666;
-            margin-top: 15px;
+            margin-top: 12px;
             font-weight: 500;
         }
 
         @media (max-width: 768px) {
             .title {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             
             .countdown-container {
-                gap: 12px;
+                gap: 8px;
             }
             
             .time-unit {
-                min-width: 80px;
-                padding: 15px 12px;
+                min-width: 65px;
+                padding: 12px 8px;
             }
             
             .time-value {
-                font-size: 1.8rem;
-                height: 45px;
+                font-size: 1.4rem;
+                height: 36px;
             }
             
-            .flip-card-front, .flip-card-back {
-                font-size: 1.8rem;
+            .flip-top, .flip-bottom {
+                font-size: 1.4rem;
             }
             
             .dashboard {
-                padding: 25px;
+                padding: 20px;
             }
         }
 
         @media (max-width: 480px) {
             .dashboard {
-                padding: 25px;
+                padding: 16px;
             }
             
             .title {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
             
             .subtitle {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .time-value {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
+                height: 32px;
             }
             
-            .flip-card-front, .flip-card-back {
-                font-size: 1.5rem;
+            .flip-top, .flip-bottom {
+                font-size: 1.2rem;
+            }
+            
+            .time-unit {
+                min-width: 55px;
+                padding: 10px 6px;
             }
         }
     </style>
@@ -227,11 +265,15 @@
             <div class="time-unit">
                 <div class="time-value">
                     <div class="flip-card" id="months-flip">
-                        <div class="flip-card-front">
-                            <span id="months">00</span>
+                        <div class="flip-top">
+                            <div class="flip-top-content">
+                                <span id="months">00</span>
+                            </div>
                         </div>
-                        <div class="flip-card-back">
-                            <span id="months-back">00</span>
+                        <div class="flip-bottom">
+                            <div class="flip-bottom-content">
+                                <span id="months-back">00</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,11 +283,15 @@
             <div class="time-unit">
                 <div class="time-value">
                     <div class="flip-card" id="weeks-flip">
-                        <div class="flip-card-front">
-                            <span id="weeks">00</span>
+                        <div class="flip-top">
+                            <div class="flip-top-content">
+                                <span id="weeks">00</span>
+                            </div>
                         </div>
-                        <div class="flip-card-back">
-                            <span id="weeks-back">00</span>
+                        <div class="flip-bottom">
+                            <div class="flip-bottom-content">
+                                <span id="weeks-back">00</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -255,11 +301,15 @@
             <div class="time-unit">
                 <div class="time-value">
                     <div class="flip-card" id="days-flip">
-                        <div class="flip-card-front">
-                            <span id="days">00</span>
+                        <div class="flip-top">
+                            <div class="flip-top-content">
+                                <span id="days">00</span>
+                            </div>
                         </div>
-                        <div class="flip-card-back">
-                            <span id="days-back">00</span>
+                        <div class="flip-bottom">
+                            <div class="flip-bottom-content">
+                                <span id="days-back">00</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -269,11 +319,15 @@
             <div class="time-unit">
                 <div class="time-value">
                     <div class="flip-card" id="hours-flip">
-                        <div class="flip-card-front">
-                            <span id="hours">00</span>
+                        <div class="flip-top">
+                            <div class="flip-top-content">
+                                <span id="hours">00</span>
+                            </div>
                         </div>
-                        <div class="flip-card-back">
-                            <span id="hours-back">00</span>
+                        <div class="flip-bottom">
+                            <div class="flip-bottom-content">
+                                <span id="hours-back">00</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -283,11 +337,15 @@
             <div class="time-unit">
                 <div class="time-value">
                     <div class="flip-card" id="minutes-flip">
-                        <div class="flip-card-front">
-                            <span id="minutes">00</span>
+                        <div class="flip-top">
+                            <div class="flip-top-content">
+                                <span id="minutes">00</span>
+                            </div>
                         </div>
-                        <div class="flip-card-back">
-                            <span id="minutes-back">00</span>
+                        <div class="flip-bottom">
+                            <div class="flip-bottom-content">
+                                <span id="minutes-back">00</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -297,11 +355,15 @@
             <div class="time-unit">
                 <div class="time-value">
                     <div class="flip-card" id="seconds-flip">
-                        <div class="flip-card-front">
-                            <span id="seconds">00</span>
+                        <div class="flip-top">
+                            <div class="flip-top-content">
+                                <span id="seconds">00</span>
+                            </div>
                         </div>
-                        <div class="flip-card-back">
-                            <span id="seconds-back">00</span>
+                        <div class="flip-bottom">
+                            <div class="flip-bottom-content">
+                                <span id="seconds-back">00</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -335,10 +397,10 @@
             const flipCard = document.getElementById(element + '-flip');
             const backElement = document.getElementById(element + '-back');
             
-            // Set the back value
+            // Set the back value (bottom half shows new number)
             backElement.textContent = newValue.toString().padStart(2, '0');
             
-            // Add flip class
+            // Add flip class to start animation
             flipCard.classList.add('flipped');
             
             // After animation completes, update front value and reset
