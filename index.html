@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET UG 2026 Countdown Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, rgba(107, 142, 214, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
+            background-image: url('YOUR_BACKGROUND_IMAGE_URL_HERE');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .dashboard {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .time-unit {
+            background: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            min-width: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-unit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .time-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            position: relative;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .flip-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .motivational-text {
+            font-size: 1.1rem;
+            color: #34495e;
+            font-style: italic;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .exam-date {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .countdown-container {
+                gap: 15px;
+            }
+            
+            .time-unit {
+                min-width: 90px;
+                padding: 20px 15px;
+            }
+            
+            .time-value {
+                font-size: 2rem;
+                height: 50px;
+            }
+            
+            .flip-card-front, .flip-card-back {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard {
+                padding: 25px;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .time-value {
+                font-size: 1.5rem;
+            }
+            
+            .flip-card-front, .flip-card-back {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1 class="title">NEET UG 2026</h1>
+        <p class="subtitle">Countdown to Your Medical Dreams</p>
+        
+        <div class="countdown-container">
+            <div class="time-unit">
+                <div class="time-value">
+                    <div class="flip-card" id="months-flip">
+                        <div class="flip-card-front">
+                            <span id="months">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="months-back">00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-label">Months</div>
+            </div>
+            
+            <div class="time-unit">
+                <div class="time-value">
+                    <div class="flip-card" id="weeks-flip">
+                        <div class="flip-card-front">
+                            <span id="weeks">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="weeks-back">00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-label">Weeks</div>
+            </div>
+            
+            <div class="time-unit">
+                <div class="time-value">
+                    <div class="flip-card" id="days-flip">
+                        <div class="flip-card-front">
+                            <span id="days">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="days-back">00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-label">Days</div>
+            </div>
+            
+            <div class="time-unit">
+                <div class="time-value">
+                    <div class="flip-card" id="hours-flip">
+                        <div class="flip-card-front">
+                            <span id="hours">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="hours-back">00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-label">Hours</div>
+            </div>
+            
+            <div class="time-unit">
+                <div class="time-value">
+                    <div class="flip-card" id="minutes-flip">
+                        <div class="flip-card-front">
+                            <span id="minutes">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="minutes-back">00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-label">Minutes</div>
+            </div>
+            
+            <div class="time-unit">
+                <div class="time-value">
+                    <div class="flip-card" id="seconds-flip">
+                        <div class="flip-card-front">
+                            <span id="seconds">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="seconds-back">00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-label">Seconds</div>
+            </div>
+        </div>
+        
+        <div class="exam-date">
+            <strong>Exam Date:</strong> Saturday, May 3, 2026
+        </div>
+        
+        <div class="motivational-text">
+            "Success is not final, failure is not fatal: it is the courage to continue that counts. Every second counts towards your medical career!"
+        </div>
+    </div>
+
+    <script>
+        // Target date: May 3, 2026 (NEET UG 2026 Exam Date)
+        const targetDate = new Date('2026-05-03T00:00:00').getTime();
+        
+        let previousValues = {
+            months: 0,
+            weeks: 0,
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0
+        };
+
+        function flipAnimation(element, newValue) {
+            const flipCard = document.getElementById(element + '-flip');
+            const backElement = document.getElementById(element + '-back');
+            
+            // Set the back value
+            backElement.textContent = newValue.toString().padStart(2, '0');
+            
+            // Add flip class
+            flipCard.classList.add('flipped');
+            
+            // After animation completes, update front value and reset
+            setTimeout(() => {
+                document.getElementById(element).textContent = newValue.toString().padStart(2, '0');
+                flipCard.classList.remove('flipped');
+            }, 300);
+        }
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.querySelector('.title').textContent = 'NEET UG 2026 - EXAM DAY!';
+                document.querySelector('.subtitle').textContent = 'Best of Luck! You\'ve got this!';
+                return;
+            }
+
+            // Calculate time units
+            const months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30.44));
+            const weeks = Math.floor((distance % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24 * 7));
+            const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Check for changes and animate
+            if (months !== previousValues.months) {
+                flipAnimation('months', months);
+                previousValues.months = months;
+            }
+            if (weeks !== previousValues.weeks) {
+                flipAnimation('weeks', weeks);
+                previousValues.weeks = weeks;
+            }
+            if (days !== previousValues.days) {
+                flipAnimation('days', days);
+                previousValues.days = days;
+            }
+            if (hours !== previousValues.hours) {
+                flipAnimation('hours', hours);
+                previousValues.hours = hours;
+            }
+            if (minutes !== previousValues.minutes) {
+                flipAnimation('minutes', minutes);
+                previousValues.minutes = minutes;
+            }
+            if (seconds !== previousValues.seconds) {
+                flipAnimation('seconds', seconds);
+                previousValues.seconds = seconds;
+            }
+
+            // Initial update without animation
+            if (previousValues.seconds === 0 && previousValues.minutes === 0) {
+                document.getElementById('months').textContent = months.toString().padStart(2, '0');
+                document.getElementById('weeks').textContent = weeks.toString().padStart(2, '0');
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                previousValues = { months, weeks, days, hours, minutes, seconds };
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        
+        // Initial call
+        updateCountdown();
+    </script>
+</body>
+</html>
